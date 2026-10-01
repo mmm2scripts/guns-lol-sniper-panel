@@ -1,18 +1,19 @@
 name: Build unsigned IPA
 
 on:
-  workflow_dispatch:          # Actions tab -> "Build unsigned IPA" -> Run workflow
+  workflow_dispatch:
   push:
     branches: [main]
     paths: ["ios/**", "web/**", ".github/workflows/build-ipa.yml"]
     tags: ["v*"]
 
 permissions:
-  contents: write             # only needed to attach the IPA to a release on tag pushes
+  contents: write
 
 jobs:
   build:
     runs-on: macos-14
+
     steps:
       - uses: actions/checkout@v4
 
@@ -20,7 +21,7 @@ jobs:
         run: brew install xcodegen
 
       - name: Build unsigned IPA
-        run: ./ios/build-unsigned-ipa.sh
+        run: bash ./ios/build-unsigned-ipa.sh
 
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4
