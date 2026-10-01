@@ -1,0 +1,10 @@
+.env
+data/
+__pycache__/
+venv/
+*.pyc
+ios/build/
+ios/*.xcodeproj/
+ios/App/Info.plist
+ios/Payload/
+*.ipa

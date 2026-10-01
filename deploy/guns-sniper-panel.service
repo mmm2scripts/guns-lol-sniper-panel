@@ -1,0 +1,20 @@
+# /etc/systemd/system/guns-sniper-panel.service
+# Adjust User and the paths, then:  sudo systemctl enable --now guns-sniper-panel
+[Unit]
+Description=Guns.lol sniper control panel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=sniper
+WorkingDirectory=/opt/guns-lol-sniper-panel
+ExecStart=/opt/guns-lol-sniper-panel/venv/bin/python server.py
+Restart=always
+RestartSec=3
+TimeoutStopSec=20
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

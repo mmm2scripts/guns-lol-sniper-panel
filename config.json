@@ -1,0 +1,12 @@
+{
+    "mode": "direct",
+    "letter_count": 5,
+    "delay": 0.5,
+    "use_customlist": true,
+    "filter_premium": true,
+    "save_to_file": true,
+    "webhook_url": "",
+    "known_taken": "uk",
+    "scrapingant_key": "",
+    "max_requests": 500
+}

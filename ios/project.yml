@@ -1,0 +1,43 @@
+# XcodeGen spec - the .xcodeproj is generated from this file (see ios/build-unsigned-ipa.sh).
+name: GunsSniper
+options:
+  bundleIdPrefix: com.gunssniper
+  deploymentTarget:
+    iOS: "15.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  GunsSniper:
+    type: application
+    platform: iOS
+    sources:
+      - path: App
+        excludes:
+          - Info.plist
+      # the dashboard (HTML/CSS/JS) is bundled into the app as the folder "web"
+      - path: ../web
+        type: folder
+        buildPhase: resources
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Guns Sniper
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIRequiredDeviceCapabilities:
+          - arm64
+        ITSAppUsesNonExemptEncryption: false
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true      # lets you test against http://192.168.x.x on your LAN; everything else must be HTTPS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.gunssniper.panel
+        TARGETED_DEVICE_FAMILY: "1"          # iPhone
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_FILE: App/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
