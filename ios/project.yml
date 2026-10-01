@@ -2,6 +2,12 @@
 name: GunsSniper
 options:
   bundleIdPrefix: com.gunssniper
+  # XcodeGen >= 2.44 writes the Xcode 16 project format by default (objectVersion 77),
+  # which Xcode 15 refuses to open: "The project cannot be opened because it is in a
+  # future Xcode project file format (77)". projectFormat: xcode15_0 pins the generated
+  # .xcodeproj to objectVersion 60 ("Xcode 15.0"), which Xcode 15.0 and later can open.
+  # Requires XcodeGen 2.45.0+ (brew install xcodegen).
+  projectFormat: xcode15_0
   deploymentTarget:
     iOS: "15.0"
   createIntermediateGroups: true
